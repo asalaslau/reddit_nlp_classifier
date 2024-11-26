@@ -1,0 +1,15 @@
+# Ignorar archivos de configuración sensibles
+config.json
+.env
+
+# Ignorar carpetas específicas
+__pycache__/
+node_modules/
+
+# Ignorar archivos temporales
+*.log
+*.tmp
+
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
