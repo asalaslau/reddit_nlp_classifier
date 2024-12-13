@@ -95,10 +95,7 @@ By implementing these next steps, we can enhance the model's reliability and gai
 
 ## Non-Course Sources 
 
-Here is the link to the IBM Machine Learning documentation you referenced:
-
 IBM Machine Learning Documentation: IBM ML Docs
-Additionally, here is the link to the WordClouds tool you mentioned:
 
 WordClouds.com: WordClouds
-These sources can provide valuable insights and tools for enhancing your machine learning models and data visualizations. Let me know if you need more help with them!
+These sources can provide valuable insights and tools for enhancing your machine learning models and data visualizations.
