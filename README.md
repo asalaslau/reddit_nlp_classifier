@@ -1,168 +1,104 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 3: Web APIs & NLP
+# ![](logo.png) Food Delivery Service Analysis on Reddit: UberEats and DoorDash
 
-### Description
+## Overview
 
-In week four we learned about a few different classifiers. In week five we're learning about webscraping, APIs, and Natural Language Processing (NLP). This project will put those skills to the test.
+Currently, Too Good To Go does not offer a food delivery service to reach a broader audience while promoting consumption habits that improve society. Last year, we sold a total of 121 million meals. While comparing ourselves to companies like DoorDash, which processes over 2.16 billion delivery orders, may seem ambitious, it is still a possibility.
 
-For project 3, your goal is two-fold:
-1. Using [PRAW](https://praw.readthedocs.io/en/stable/index.html), you'll collect posts from two subreddits of your choosing.
-2. You'll then use NLP to train a classifier on which subreddit a given post came from. This is a binary classification problem.
+In this project, we analyze the food ordering and delivery users of Doordash and UberEats on the social media platform Reddit. These two companies account for over 80% of the market. By analyzing their presence on Reddit, we aim to gain insights into customer and delivery driver profiles. In any market, the customer is always right, but in this case, it particularly depends on delivery drivers, who are the face of your company.
 
+**Project Goals**:
 
-#### About the API
+* Analyze the differences in posts from DoorDash and UberEats users in specific subreddits to identify key topics and sentiment.
+* As a future analysis, explore the distinction between drivers and consumers to better understand the experiences of each user type.
 
-For this project, you will be using [PRAW](https://praw.readthedocs.io/en/stable/index.html) to collect posts from two different subreddits. 
+**Problems We Might Encounter**:
+* Focusing only on Reddit might affect our ability to obtain a complete picture of what is happening.
+* There are other food delivery companies that we are not considering in this study.
+* There may be no significant differences between companies on Reddit.
 
-To help you get started, we have a [notebook](./Reddit-PRAW-tutorial.ipynb) detailing the process of creating an app and obtaining your API credentials.
+This project utilizes PRAW (Python Reddit API Wrapper) for data collection, focusing on text analysis, and applies Random Forest and Logistic Regression models
 
-Note: Rather than working in this template notebook, make a brand new "scraping" notebook (or script), with your own unique work and comments, so you can use this project in a portfolio!
+## Table of Contents
 
----
+1. Overview
+2. Executive Summary
+3. Data
+4. Requirements
+5. Methods
+6. EDA (Exploratory Data Analysis)
+7. Data Processing
+8. Conclusion & Next Steps
+9. Non Course Sources
 
-### Requirements
+## Executive Summary
 
-- Gather and prepare your data using PRAW.
-- **Create and compare two models**. Any two classifiers at least of your choosing: random forest, logistic regression, KNN, SVM, etc.
-- A Jupyter Notebook with your analysis for a peer audience of data scientists.
-- An executive summary of your results.
-- A short presentation (5-8 minutes) outlining your process and findings for a semi-technical audience.
+In this project, we explore the user discussions on Reddit regarding UberEats and DoorDash, two dominant players in the food delivery market. By analyzing customer reviews, delivery driver feedback, and general sentiment, we aim to extract valuable insights into their user profiles, satisfaction levels, and common pain points. We focus on text analysis and machine learning models (Random Forest and Logistic Regression) to uncover patterns in user behavior and identify potential differences between the two services.
 
-**Pro Tip:** You can find a good example executive summary [here](https://www.proposify.biz/blog/executive-summary).
+The data collection from Reddit, using PRAW, offers a rich source of information from real users. This analysis will help Too Good To Go consider how it could adapt and expand into the competitive food delivery market.
 
----
+## Data
 
-### Necessary Deliverables / Submission
+The data used in this project was collected from Reddit using the PRAW API. The dataset includes posts and comments from subreddits discussing UberEats and DoorDash. We specifically focus on:
 
-- Code must be in at least one clearly commented Jupyter Notebook.
-- A readme/executive summary in markdown.
-- You must submit your slide deck as a PDF.
-- Materials must be submitted by **10:00 AM (EST) on Tuesday, 11/26**.
+* Customer reviews of the food delivery services.
+* Delivery driver experiences.
+* General opinions and feedback on the two platforms.
 
----
+The data set consists of approximately 2,700 posts. This allows for a comprehensive analysis of user sentiment and feedback for both UberEats and DoorDash. The data is analyzed through text mining techniques, sentiment analysis, and machine learning models to understand the market dynamics and user satisfaction.
 
-## Rubric
-Your instructors will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
+## Requirements
 
-For Project 3 the evaluation categories are as follows:<br>
-**The Data Science Process**
-- Problem Statement
-- Data Collection
-- Data Cleaning & EDA
-- Preprocessing & Modeling
-- Evaluation and Conceptual Understanding
-- Conclusion and Recommendations
+To run this project, you will need the following:
 
-**Organization and Professionalism**
-- Organization
-- Visualizations
-- Python Syntax and Control Flow
-- Presentation
+- Access to python a to the internet (for collecting data from Reddit)
 
-**Scores will be out of 30 points based on the 10 categories in the rubric.** <br>
-*3 points per section*<br>
+Python Libraries:
+- PRAW: Python Reddit API Wrapper for Reddit data collection
+- Pandas: Data manipulation and analysis
+- NumPy: Numerical computing
+- Matplotlib: Data visualization
+- Scikit-learn: Machine learning models and evaluation
+- nltk: Natural Language Toolkit for text processing
+- Seaborn: Visualization library for statistical data
 
-| Score | Interpretation |
-| --- | --- |
-| **0** | *Project fails to meet the minimum requirements for this item.* |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.* |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.* |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
+## Methods
 
+Exploratory Data Analysis (EDA)
+Before building the models, we perform Exploratory Data Analysis to understand the structure of the data. Key steps include:
 
-### The Data Science Process
+Data Cleaning: Removing duplicates, handling missing values, and cleaning text data.
 
-**Problem Statement**
-- Is it clear what the goal of the project is?
-- What type of model will be developed?
-- How will success be evaluated?
-- Is the scope of the project appropriate?
-- Is it clear who cares about this or why this is important to investigate?
-- Does the student consider the audience and the primary and secondary stakeholders?
+Text Preprocessing: Tokenization, stemming, and removing stopwords.
 
-**Data Collection**
-- Was enough data gathered to generate a significant result? (At least 1000 posts per subreddit)
-- Was data collected that was useful and relevant to the project?
-- Was data collection and storage optimized through custom functions, pipelines, and/or automation?
-- Was thought given to the server receiving the requests such as considering number of requests per second?
+Sentiment Analysis: Analyzing the sentiment of posts and comments using text mining techniques.
 
-**Data Cleaning and EDA**
-- Are missing values imputed/handled appropriately?
-- Are distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are steps taken during data cleaning and EDA framed appropriately?
-- Does the student address whether or not they are likely to be able to answer their problem statement with the provided data given what they've discovered during EDA?
+Feature Engineering: Creating features like word frequency, post length, and sentiment scores.
 
-**Preprocessing and Modeling**
-- Is text data successfully converted to a matrix representation?
-- Are methods such as stop words, stemming, and lemmatization explored?
-- Does the student properly split and/or sample the data for validation/training purposes?
-- Does the student test and evaluate a variety of models to identify a production algorithm (**AT MINIMUM:** two models)?
-- Does the student defend their choice of production model relevant to the data at hand and the problem?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
+Data Processing
 
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem objective?
-- Does the student interpret the results of their model for purposes of inference?
-- Is domain knowledge demonstrated when interpreting results?
-- Does the student provide appropriate interpretation with regards to descriptive and inferential statistics?
+TF-IDF Vectorization: Text data is transformed into numerical representations using TF-IDF vectorizer.
 
-**Conclusion and Recommendations**
-- Does the student provide appropriate context to connect individual steps back to the overall project?
-- Is it clear how the final recommendations were reached?
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Does the student address how findings of this research can be applied for the benefit of stakeholders?
-- Are future steps to move the project forward identified?
+Model Training: Both Random Forest and Logistic Regression models are trained using the processed data.
 
+Model Evaluation: The models are evaluated using accuracy, classification report, and ROC-AUC to understand their performance.
 
-### Organization and Professionalism
+## Conclusion & Next Steps
+We have developed a good model for differentiating between app users based on their posts. However, the results are not fully conclusive, as they heavily depend on the presence of app names in the user's post. These app names serve as key features for classification, which can limit the model's performance when they are absent or ambiguous in the text.
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths?
-- Does the README provide a good executive summary of the project?
-- Is markdown formatting used appropriately to structure notebooks?
-- Are there an appropriate amount of comments to support the code?
-- Are files & directories organized correctly?
-- Are there unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+**Next Steps**
 
-**Visualizations**
-- Are sufficient visualizations provided?
-- Do plots accurately demonstrate valid relationships?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+* Categorize Posts by Main Subject: To improve classification accuracy, we recommend expanding the analysis by categorizing posts according to their main subject. This will help identify the underlying themes and improve the model's ability to differentiate between app users even in the absence of app names.
+* Advanced Text Analysis Techniques: We should explore more advanced techniques in text analysis, such as Natural Language Processing (NLP) methods like topic modeling or sentiment analysis, which can offer deeper insights into the content of user posts.
+* Ensemble Learning: To create a more robust model, consider using ensemble learning methods. Combining different models (e.g., decision trees, support vector machines, and neural networks) can increase classification accuracy by leveraging the strengths of each model and reducing the overall error rate.
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follows general best practices and style guidelines?
-- Are Pandas functions used appropriately?
-- Are `sklearn` and `NLTK` methods used appropriately?
+By implementing these next steps, we can enhance the model's reliability and gain a more comprehensive understanding of user behavior and sentiment across different apps.
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does a strong narrative run through the presentation building toward a final conclusion?
-- Are the conclusions/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Is the student substantially over or under time?
-- Does the student appropriately pace their presentation?
-- Does the student deliver their message with clarity and volume?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations necessary and useful for supporting conclusions/explaining findings?
+## Non-Course Sources 
 
+Here is the link to the IBM Machine Learning documentation you referenced:
 
----
+IBM Machine Learning Documentation: IBM ML Docs
+Additionally, here is the link to the WordClouds tool you mentioned:
 
-### Why did we choose this project for you?
-This project covers three of the biggest concepts we cover in the class: Classification Modeling, Natural Language Processing and Data Wrangling/Acquisition.
-
-Part 1 of the project focuses on **Data wrangling/gathering/acquisition**. This is a very important skill as not all the data you will need will be in clean CSVs or a single table in SQL.  There is a good chance that wherever you land you will have to gather some data from some unstructured/semi-structured sources; when possible, requesting information from an API, but sometimes scraping it because they don't have an API (or it's terribly documented).
-
-Part 2 of the project focuses on **Natural Language Processing** and converting standard text data (like Titles and Comments) into a format that allows us to analyze it and use it in modeling.
-
-Part 3 of the project focuses on **Classification Modeling**.  Given that project 2 was a regression focused problem, we needed to give you a classification focused problem to practice the various models, means of assessment and preprocessing associated with classification.   
+WordClouds.com: WordClouds
+These sources can provide valuable insights and tools for enhancing your machine learning models and data visualizations. Let me know if you need more help with them!
